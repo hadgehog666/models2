@@ -1,0 +1,62 @@
+﻿@* Views/HeatExchange/About.cshtml *@
+@{
+    ViewData["Title"] = "О программе";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-info text-white">
+            <h4 class="mb-0"><i class="bi bi-info-circle"></i> О программе</h4>
+        </div>
+        <div class="card-body">
+            <h5>Расчет теплообмена в противоточном движении</h5>
+            <p class="lead">
+                Веб-приложение для моделирования процессов теплообмена в плотном продуваемом слое.
+            </p>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h6><i class="bi bi-gear"></i> Техническая информация</h6>
+                    <ul>
+                        <li>Платформа: ASP.NET Core 6.0</li>
+                        <li>Язык программирования: C#</li>
+                        <li>Фронтенд: Bootstrap 5, Plotly.js</li>
+                        <li>Архитектура: MVC</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h6><i class="bi bi-feather"></i> Особенности</h6>
+                    <ul>
+                        <li>Валидация входных данных</li>
+                        <li>Интерактивные графики</li>
+                        <li>Сохранение расчетов</li>
+                        <li>Экспорт результатов</li>
+                        <li>Адаптивный дизайн</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-4 p-3 bg-light rounded">
+                <h6><i class="bi bi-book"></i> Методика расчета</h6>
+                <p>
+                    Расчет основан на уравнениях стационарного теплообмена при противоточном
+                    движении кусковых материалов и газа. Используются формулы из практического
+                    занятия №3 по дисциплине "Общая теория и моделирование систем".
+                </p>
+                <p class="mb-0">
+                    Основные уравнения: ϑ = (1 - exp[(m-1)Y/m]) / (1 - m*exp[(m-1)Y₀/m])<br>
+                    где m = (Gₘ·Cₘ) / (Vᵣ·Cᵣ) - отношение теплоемкостей потоков
+                </p>
+            </div>
+
+            <div class="mt-4">
+                <a href="@Url.Action("Calculate")" class="btn btn-primary">
+                    <i class="bi bi-calculator"></i> Начать расчет
+                </a>
+                <a href="/" class="btn btn-secondary">
+                    <i class="bi bi-house"></i> На главную
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
