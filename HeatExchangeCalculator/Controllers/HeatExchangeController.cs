@@ -102,5 +102,12 @@ namespace HeatExchangeCalculator.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ClearAll()
+        {
+            _calculationService.ClearAllCalculations();
+            return RedirectToAction("SavedCalculations");
+        }
     }
 }
