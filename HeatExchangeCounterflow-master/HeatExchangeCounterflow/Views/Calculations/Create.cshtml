@@ -1,0 +1,75 @@
+﻿@model HeatExchangeCounterflow.Models.Calculation
+@{
+    Layout = "_Layout";
+}
+
+<h2>Новый расчёт</h2>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="error">
+        @foreach (var e in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <div>@e.ErrorMessage</div>
+        }
+    </div>
+}
+
+<form asp-action="Create" method="post" class="form-grid">
+
+    <div>
+        <label>Название расчёта</label>
+        <input asp-for="Name" />
+    </div>
+
+    <div>
+        <label>Высота слоя, м</label>
+        <input asp-for="Input.LayerHeightRaw" />
+    </div>
+
+    <div>
+        <label>Начальная температура материала, °C</label>
+        <input asp-for="Input.InitialMaterialTemp" />
+    </div>
+
+    <div>
+        <label>Начальная температура газа, °C</label>
+        <input asp-for="Input.InitialGasTemp" />
+    </div>
+
+    <div>
+        <label>Скорость газа, м/с</label>
+        <input asp-for="Input.GasVelocity" />
+    </div>
+
+    <div>
+        <label>Теплоёмкость газа</label>
+        <input asp-for="Input.GasHeatCapacity" />
+    </div>
+
+    <div>
+        <label>Расход материала, кг/с</label>
+        <input asp-for="Input.MaterialFlow" />
+    </div>
+
+    <div>
+        <label>Теплоёмкость материала</label>
+        <input asp-for="Input.MaterialHeatCapacity" />
+    </div>
+
+    <div>
+        <label>αV</label>
+        <input asp-for="Input.AlphaV" />
+    </div>
+
+    <div>
+        <label>Диаметр аппарата, м</label>
+        <input asp-for="Input.ApparatusDiameter" />
+    </div>
+
+    <div class="form-actions">
+        <button type="submit">Рассчитать и сохранить</button>
+        <a href="/Calculations" class="btn-secondary">Отмена</a>
+    </div>
+
+</form>

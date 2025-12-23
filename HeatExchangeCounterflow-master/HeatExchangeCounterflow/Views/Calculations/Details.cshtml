@@ -1,0 +1,101 @@
+﻿@model HeatExchangeCounterflow.Models.Calculation
+@{
+    Layout = "_Layout";
+}
+
+<h2>@Model.Name</h2>
+
+<h3>Результаты расчёта по высоте слоя</h3>
+
+<table class="result-table">
+    <tr>
+        <th>Координаты у, м</th>
+        @foreach (var p in Model.Points)
+        {
+            <th>@p.Y</th>
+        }
+    </tr>
+
+    <tr>
+        <td>Относительная высота Y</td>
+        @foreach (var p in Model.Points)
+        {
+            <td>@p.RelativeY</td>
+        }
+    </tr>
+
+    <tr>
+        <td>Числитель θ₁</td>
+        @foreach (var p in Model.Points)
+        {
+            <td>@p.Theta1</td>
+        }
+    </tr>
+
+    <tr>
+        <td>Числитель θ₂</td>
+        @foreach (var p in Model.Points)
+        {
+            <td>@p.Theta2</td>
+        }
+    </tr>
+
+    <tr>
+        <td>θ материала</td>
+        @foreach (var p in Model.Points)
+        {
+            <td>@p.ThetaMaterial</td>
+        }
+    </tr>
+
+    <tr>
+        <td>θ газа</td>
+        @foreach (var p in Model.Points)
+        {
+            <td>@p.ThetaGas</td>
+        }
+    </tr>
+
+    <tr>
+        <td>Температура материала, °C</td>
+        @foreach (var p in Model.Points)
+        {
+            <td>@p.MaterialTemp</td>
+        }
+    </tr>
+
+    <tr>
+        <td>Температура газа, °C</td>
+        @foreach (var p in Model.Points)
+        {
+            <td>@p.GasTemp</td>
+        }
+    </tr>
+
+    <tr>
+        <td>Разность температур, °C</td>
+        @foreach (var p in Model.Points)
+        {
+            <td>@p.DeltaTemp</td>
+        }
+    </tr>
+</table>
+
+<h3>Графики</h3>
+
+<canvas id="tempChart" height="300"></canvas>
+<canvas id="deltaChart" height="300"></canvas>
+
+<script>
+    drawCharts(
+        @Html.Raw(Json.Serialize(Model.Points.Select(p => p.Y))),
+        @Html.Raw(Json.Serialize(Model.Points.Select(p => p.MaterialTemp))),
+        @Html.Raw(Json.Serialize(Model.Points.Select(p => p.GasTemp))),
+        @Html.Raw(Json.Serialize(Model.Points.Select(p => p.DeltaTemp)))
+    );
+</script>
+
+<div style="margin-top:20px">
+    <a class="btn" href="/Calculations">← К списку расчётов</a>
+    <a class="btn btn-secondary" href="/Calculations/Edit/@Model.Id">Редактировать</a>
+</div>

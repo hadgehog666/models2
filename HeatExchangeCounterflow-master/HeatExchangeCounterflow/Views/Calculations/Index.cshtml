@@ -1,0 +1,32 @@
+﻿@model IEnumerable<HeatExchangeCounterflow.Models.Calculation>
+@{
+    Layout = "_Layout";
+}
+
+
+<h2>Сохранённые расчёты</h2>
+
+<a class="btn btn-primary" href="/Calculations/Create">+ Новый расчёт</a>
+
+<table class="result-table" style="margin-top:15px">
+    <tr>
+        <th>Название</th>
+        <th>Дата</th>
+        <th>Действия</th>
+    </tr>
+
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.Name</td>
+            <td>@c.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+            <td>
+                <a href="/Calculations/Details/@c.Id">Открыть</a> |
+                <a href="/Calculations/Edit/@c.Id">Редактировать</a> |
+                <a href="/Calculations/Delete/@c.Id"
+                   onclick="return confirm('Удалить расчёт?')">Удалить</a>
+            </td>
+        </tr>
+    }
+</table>
+
