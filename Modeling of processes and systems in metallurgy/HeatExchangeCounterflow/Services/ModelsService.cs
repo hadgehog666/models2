@@ -2,7 +2,7 @@
 
 namespace HeatExchangeCounterflow.Services;
 
-public class HeatExchangeService : IHeatExchangeService
+public class ModelsService : IHeatExchangeService
 {
     public List<LayerPoint> Calculate(CalculationInput p)
     {

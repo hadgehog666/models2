@@ -6,12 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HeatExchangeCounterflow.Controllers;
 
-public class CalculationsController : Controller
+public class ImportCon : Controller
 {
     private readonly AppDbContext _db;
     private readonly IHeatExchangeService _service;
 
-    public CalculationsController(AppDbContext db, IHeatExchangeService service)
+    public ImportCon(AppDbContext db, IHeatExchangeService service)
     {
         _db = db;
         _service = service;
