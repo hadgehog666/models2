@@ -11,7 +11,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=heat.db"));
 
-builder.Services.AddScoped<IHeatExchangeService, ModelsService>();
+builder.Services.AddScoped<IHeatExchangeService, HeatExchangeService>();
 
 var app = builder.Build();
 
